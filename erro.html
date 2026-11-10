@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inês Flores - Página não disponível.">
+    <link rel="shortcut icon" href="./Produtos - imagens/New Logo.jpeg" type="image/x-icon">
+    <title>Página indisponível | Inês Flores</title>
+
+    <style>
+        /* PÁGINA DE ERRO */
+
+        .erro-pagina {
+            min-height: calc(100vh - 85px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 8%;
+            background: linear-gradient(to bottom, #FFF9F5 0%, #F8E4E8 100%);
+        }
+
+        .erro-conteudo {
+            max-width: 560px;
+        }
+
+        .erro-icone {
+            font-size: 64px;
+            margin-bottom: 10px;
+        }
+
+        .erro-codigo {
+            font-size: clamp(80px, 14vw, 140px);
+            font-weight: bold;
+            line-height: 1;
+            color: #702B3A;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .erro-conteudo h2 {
+            font-size: clamp(24px, 4vw, 34px);
+            color: #702B3A;
+            margin-bottom: 15px;
+        }
+
+        .erro-conteudo p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .erro-botoes {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .erro-botoes a {
+            display: inline-block;
+            padding: 15px 28px;
+            border-radius: 30px;
+            border: 1.5px solid #702B3A;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+        .btn-principal {
+            background-color: #702B3A;
+            color: #FFFFFF;
+        }
+
+        .btn-principal:hover {
+            background-color: #4E1D29;
+            transform: translateY(-3px);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: #702B3A;
+        }
+
+        .btn-secundario:hover {
+            background-color: #F3DDE2;
+            transform: translateY(-3px);
+        }
+
+        .rodape-erro {
+            background: #38252A;
+            color: #FFFFFF;
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!--CABEÇALHO-->
+    <header>
+
+        <div class="logo">
+            <a href="index.html">
+                <img class="logo-img" src="Produtos - imagens/Header logo png.png" alt="Logo Ines Flores">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Início</a></li>
+                <li><a href="index.html#produtos">Produtos</a></li>
+                <li><a href="index.html#historia">Historia</a></li>
+                <li><a href="erro.html">Clube</a></li>
+                <li><a href="index.html#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--CONTEUDO PRINCIPAL-->
+    <main class="erro-pagina">
+        <div class="erro-conteudo">
+            <div class="erro-icone">🌷</div>
+            <div class="erro-codigo">404</div>
+
+            <h2>Ops! Esta página ainda não floresceu</h2>
+
+            <p>
+                O Clube Inês Flores ainda está sendo preparado com muito carinho.
+                Volte em breve ou aproveite para conhecer nossos produtos.
+            </p>
+
+            <div class="erro-botoes">
+                <a href="index.html" class="btn-principal">Voltar ao início</a>
+                <a href="index.html#produtos" class="btn-secundario">Ver produtos</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape-erro">
+        <p>© 2026 Fatec Mauá</p>
+    </footer>
+
+</body>
+</html>

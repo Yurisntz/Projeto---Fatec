@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="produtos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inês Flores - Veja todos os nossos buquês e arranjos.">
+    <link rel="shortcut icon" href="./Produtos - imagens/New Logo.jpeg" type="image/x-icon">
+    <title>Produtos | Inês Flores</title>
+</head>
+<body>
+    <!--CABEÇALHO-->
+    <header>
+
+        <div class="logo">
+            <a href="index.html">
+                <img class="logo-img" src="Produtos - imagens/Header logo png.png" alt="Logo Inês Flores">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="index.html#historia">Historia</a></li>
+                <li><a href="erro.html">Clube</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--CONTEUDO PRINCIPAL-->
+    <main>
+        <section id="produtos">
+
+            <div class="produtos-titulo">
+                <h2>Todos os Produtos</h2>
+                <p>Escolha o presente ideal e clique para ver mais detalhes.</p>
+            </div>
+
+           
+            <div class="produtos-container" id="lista-produtos"></div>
+
+        </section>
+    </main>
+
+    <footer class="rodape-interno">
+        <p>© 2026 Fatec Mauá</p>
+    </footer>
+
+    <script src="produtos.js"></script>
+    <script>
+        const lista = document.getElementById("lista-produtos");
+
+        lista.innerHTML = produtos.map(function (p) {
+            return `
+                <article class="produto-card">
+                    <img src="${p.imagem}" alt="${p.nome}">
+                    <h3>${p.nome}</h3>
+                    <p>${p.resumo}</p>
+                    <span>${formatarPreco(p.preco)}</span>
+                    <a href="produto.html?id=${p.id}">Ver detalhes</a>
+                </article>
+            `;
+        }).join("");
+    </script>
+</body>
+</html>

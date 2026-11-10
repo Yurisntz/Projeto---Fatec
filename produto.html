@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="produtos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inês Flores - Detalhes do produto.">
+    <link rel="shortcut icon" href="./Produtos - imagens/New Logo.jpeg" type="image/x-icon">
+    <title>Produto | Inês Flores</title>
+</head>
+
+<body>
+    <!--CABEÇALHO-->
+    <header>
+
+        <div class="logo">
+            <a href="index.html">
+                <img class="logo-img" src="Produtos - imagens/Header logo png.png" alt="Logo Inês Flores">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="index.html#historia">Historia</a></li>
+                <li><a href="erro.html">Clube</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--CONTEUDO PRINCIPAL-->
+    <main class="pagina-produto" id="detalhe-produto">
+       
+    </main>
+
+    <footer class="rodape-interno">
+        <p>© 2026 Fatec Mauá</p>
+    </footer>
+
+    <script src="produtos.js"></script>
+    <script>
+        const area = document.getElementById("detalhe-produto");
+        const id = Number(new URLSearchParams(window.location.search).get("id"));
+        const produto = produtos.find(function (p) { return p.id === id; });
+
+        if (!produto) {
+            area.innerHTML = `
+                <div class="produto-nao-encontrado">
+                    <h1>Produto não encontrado</h1>
+                    <p>Não encontramos o produto que você procura.</p>
+                    <a href="produtos.html" class="btn btn-principal">Ver todos os produtos</a>
+                </div>
+            `;
+        } else {
+            document.title = produto.nome + " | Inês Flores";
+
+            const mensagem = 'Olá! Tenho interesse no produto "' + produto.nome +
+                '" (' + formatarPreco(produto.preco) + ").";
+
+            const linkEncomenda = NUMERO_WHATSAPP
+                ? "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(mensagem)
+                : "index.html#contato";
+
+            const detalhes = produto.detalhes.map(function (d) {
+                return "<li><strong>" + d[0] + "</strong><span>" + d[1] + "</span></li>";
+            }).join("");
+
+            const outros = produtos
+                .filter(function (p) { return p.id !== produto.id; })
+                .map(function (p) {
+                    return `
+                        <article class="produto-card">
+                            <img src="${p.imagem}" alt="${p.nome}">
+                            <h3>${p.nome}</h3>
+                            <p>${p.resumo}</p>
+                            <span>${formatarPreco(p.preco)}</span>
+                            <a href="produto.html?id=${p.id}">Ver detalhes</a>
+                        </article>
+                    `;
+                }).join("");
+
+            area.innerHTML = `
+                <p class="migalhas">
+                    <a href="index.html">Início</a> &gt;
+                    <a href="produtos.html">Produtos</a> &gt;
+                    ${produto.nome}
+                </p>
+
+                <div class="detalhe-produto">
+                    <div class="detalhe-imagem">
+                        <img src="${produto.imagem}" alt="${produto.nome}">
+                    </div>
+
+                    <div class="detalhe-info">
+                        <h1>${produto.nome}</h1>
+                        <p class="detalhe-preco">${formatarPreco(produto.preco)}</p>
+                        <p class="detalhe-descricao">${produto.descricao}</p>
+
+                        <ul class="detalhe-lista">${detalhes}</ul>
+
+                        <div class="detalhe-botoes">
+                            <a href="${linkEncomenda}" class="btn btn-principal">Fazer encomenda</a>
+                            <a href="produtos.html" class="btn btn-secundario">Voltar aos produtos</a>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="outros-produtos">
+                    <h2>Você também pode gostar</h2>
+                    <div class="produtos-container">${outros}</div>
+                </section>
+            `;
+        }
+    </script>
+</body>
+
+</html>
